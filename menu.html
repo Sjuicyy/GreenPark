@@ -1,0 +1,1104 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#1d4931">
+    <title>Café Menu | Green Park Café</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --forest: #1d4931;
+            --leaf: #397943;
+            --cream: #ffffff;
+            --red: #c93252;
+            --ink: #202820;
+            --muted: #667067;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: var(--cream);
+            font-family: Georgia, "Times New Roman", serif;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .topbar {
+            padding: 11px 20px;
+            background: var(--forest);
+            color: #f8f4e9;
+            font: 11px/1.4 Arial, sans-serif;
+            letter-spacing: .13em;
+            text-align: center;
+            text-transform: uppercase;
+
+        header {
+            padding: 23px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            background: white;
+        }
+
+        .brand {
+            color: var(--forest);
+            font-size: 23px;
+            line-height: 1;
+            letter-spacing: .025em;
+        }
+
+        .brand span {
+            display: block;
+            margin-top: 6px;
+            font: 9px Arial, sans-serif;
+            letter-spacing: .25em;
+            text-transform: uppercase;
+        }
+
+        .home-link {
+            color: var(--forest);
+            font: 11px Arial, sans-serif;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        .page-intro {
+            padding: 70px 24px 54px;
+            text-align: center;
+        }
+
+        .eyebrow {
+            color: var(--leaf);
+            font: 11px Arial, sans-serif;
+            letter-spacing: .25em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 15px 0 12px;
+            color: var(--forest);
+            font-size: clamp(42px, 6vw, 68px);
+            font-weight: 400;
+            line-height: 1;
+        }
+
+        .page-intro p {
+            max-width: 600px;
+            margin: auto;
+            color: var(--muted);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .food-feature {
+            width: min(1160px, 90%);
+            margin: 0 auto 56px;
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            align-items: center;
+            background: #f1f7ef;
+        }
+
+        .food-feature img {
+            display: block;
+            width: 100%;
+            height: 310px;
+            object-fit: cover;
+        }
+
+        .food-feature-copy {
+            padding: 32px 9%;
+        }
+
+        .food-feature-copy h2 {
+            margin: 12px 0;
+            color: var(--forest);
+            font-size: 32px;
+            font-weight: 400;
+        }
+
+        .food-feature-copy p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .menu-layout {
+            width: min(1160px, 90%);
+            margin: 0 auto 90px;
+            display: grid;
+            grid-template-columns: 225px minmax(0, 1fr);
+            align-items: start;
+            gap: 60px;
+        }
+
+        .category-sidebar {
+            position: sticky;
+            top: 28px;
+            padding: 25px 20px;
+            border: 1px solid #e2e4dc;
+            background: #fff;
+        }
+
+        .category-sidebar h2 {
+            margin: 0 0 18px;
+            color: var(--forest);
+            font-size: 20px;
+            font-weight: 400;
+        }
+
+        .category-list {
+            display: grid;
+            gap: 5px;
+        }
+
+        .category-list a {
+            padding: 11px 10px;
+            color: var(--muted);
+            font: 12px Arial, sans-serif;
+            letter-spacing: .04em;
+            transition: background .2s, color .2s;
+        }
+
+        .category-list a:hover,
+        .category-list a:focus-visible {
+            background: #f1f7ef;
+            color: var(--forest);
+        }
+
+        .menu-sections {
+            min-width: 0;
+        }
+
+        .menu-section {
+            padding: 8px 0 34px;
+            scroll-margin-top: 26px;
+        }
+
+        .menu-section + .menu-section {
+            padding-top: 34px;
+            border-top: 1px solid #dfe2d8;
+        }
+
+        .menu-section h2 {
+            margin: 0 0 8px;
+            color: var(--forest);
+            font-size: 34px;
+            font-weight: 400;
+        }
+
+        .section-description {
+            margin: 0 0 22px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .dish-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .menu-items {
+            display: grid;
+            gap: 10px;
+        }
+
+        .menu-item {
+            padding: 0;
+            display: flex;
+            align-items: stretch;
+            justify-content: space-between;
+            gap: 0;
+            border: 1px solid #e2e4dc;
+            background: white;
+            overflow: hidden;
+        }
+
+        .menu-item-image {
+            width: 130px;
+            min-width: 130px;
+            height: auto;
+            object-fit: cover;
+            border-right: 1px solid #e2e4dc;
+            background: #f1f7ef;
+        }
+
+        .menu-item-content {
+            flex: 1;
+            min-width: 0;
+            padding: 16px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .menu-item h3 {
+            margin: 0;
+            color: var(--forest);
+            font-size: 17px;
+            font-weight: 400;
+        }
+
+        .menu-item-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 12px 20px;
+        }
+
+        .menu-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .menu-option > span {
+            color: var(--forest);
+            font: 12px/1.5 Arial, sans-serif;
+            white-space: nowrap;
+        }
+
+        .menu-option strong {
+            font-weight: 700;
+        }
+
+        .menu-option .order-now,
+        .menu-option .quantity-control button {
+            min-height: 32px;
+        }
+
+        .menu-option .quantity-control {
+            gap: 6px;
+        }
+
+        .menu-option .quantity-control button {
+            width: 32px;
+        }
+
+        .dish {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #e2e4dc;
+            background: white;
+            transition: box-shadow .2s, transform .2s;
+        }
+
+        .dish:hover,
+        .dish:focus-within {
+            box-shadow: 0 12px 30px #1d493120;
+            transform: translateY(-2px);
+        }
+
+        .dish img {
+            display: block;
+            width: 100%;
+            height: 155px;
+            object-fit: cover;
+            transition: filter .2s;
+        }
+
+        .dish:hover img,
+        .dish:focus-within img {
+            filter: brightness(.68);
+        }
+
+        .dish-price-overlay {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 7px 10px;
+            border-radius: 2px;
+            background: rgba(29, 73, 49, .91);
+            color: white;
+            font: 12px Arial, sans-serif;
+            opacity: 0;
+            transform: translateY(-4px);
+            transition: opacity .2s, transform .2s;
+        }
+
+        .dish:hover .dish-price-overlay,
+        .dish:focus-within .dish-price-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .dish-copy {
+            padding: 16px 18px 18px;
+        }
+
+        .dish h3 {
+            margin: 0 0 8px;
+            color: var(--forest);
+            font-size: 18px;
+            font-weight: 400;
+        }
+
+        .dish p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .dish-order-row {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .dish-price {
+            color: var(--forest);
+            font: 12px Arial, sans-serif;
+            font-weight: 700;
+        }
+
+        .order-now,
+        .quantity-control button {
+            min-height: 36px;
+            padding: 0 13px;
+            border: 0;
+            background: var(--forest);
+            color: white;
+            cursor: pointer;
+            font: 11px Arial, sans-serif;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+        }
+
+        .order-now:hover,
+        .quantity-control button:hover {
+            background: var(--leaf);
+        }
+
+        .quantity-control {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-control button {
+            width: 36px;
+            padding: 0;
+            font-size: 18px;
+        }
+
+        .quantity-control span {
+            min-width: 56px;
+            color: var(--forest);
+            font: 12px Arial, sans-serif;
+            text-align: center;
+        }
+
+        .order-launcher {
+            position: fixed;
+            z-index: 5;
+            right: 24px;
+            bottom: 24px;
+            min-height: 50px;
+            padding: 0 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 0;
+            background: var(--forest);
+            box-shadow: 0 8px 24px #0003;
+            color: white;
+            cursor: pointer;
+            font: 12px Arial, sans-serif;
+            letter-spacing: .06em;
+        }
+
+        .order-count {
+            min-width: 24px;
+            height: 24px;
+            padding: 0 6px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: var(--red);
+            color: white;
+            font-weight: 700;
+        }
+
+        .order-backdrop {
+            position: fixed;
+            z-index: 8;
+            inset: 0;
+            border: 0;
+            background: rgba(14, 27, 20, .48);
+        }
+
+        .order-panel {
+            position: fixed;
+            z-index: 9;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: min(430px, 100%);
+            padding: 27px 25px;
+            display: flex;
+            flex-direction: column;
+            background: var(--cream);
+            box-shadow: -14px 0 40px #0002;
+        }
+
+        .order-panel[hidden],
+        .order-backdrop[hidden] {
+            display: none;
+        }
+
+        .order-panel-header {
+            padding-bottom: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            border-bottom: 1px solid #dfe2d8;
+        }
+
+        .order-panel-header h2 {
+            margin: 0;
+            color: var(--forest);
+            font-size: 28px;
+            font-weight: 400;
+        }
+
+        .order-close {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #dfe2d8;
+            background: white;
+            color: var(--forest);
+            cursor: pointer;
+            font-size: 23px;
+        }
+
+        .order-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 8px 0;
+        }
+
+        .empty-order {
+            padding: 25px 0;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .order-line {
+            padding: 16px 0;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 8px 12px;
+            border-bottom: 1px solid #dfe2d8;
+        }
+
+        .order-line h3 {
+            margin: 0;
+            color: var(--forest);
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .order-line-total {
+            color: var(--forest);
+            font: 12px Arial, sans-serif;
+            font-weight: 700;
+        }
+
+        .order-line .quantity-control {
+            grid-column: 1 / -1;
+        }
+
+        .order-summary {
+            padding-top: 17px;
+            border-top: 1px solid #dfe2d8;
+        }
+
+        .order-total {
+            margin: 0 0 14px;
+            display: flex;
+            justify-content: space-between;
+            color: var(--forest);
+            font: 15px Arial, sans-serif;
+            font-weight: 700;
+        }
+
+        .finalize-order {
+            width: 100%;
+            min-height: 48px;
+            border: 0;
+            background: var(--red);
+            color: white;
+            cursor: pointer;
+            font: 12px Arial, sans-serif;
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        .finalize-order:disabled {
+            cursor: not-allowed;
+            opacity: .55;
+        }
+
+        .order-confirmation,
+        .checkout-note {
+            margin: 12px 0 0;
+            color: var(--muted);
+            font: 12px/1.6 Arial, sans-serif;
+        }
+
+        .order-confirmation {
+            color: var(--forest);
+            font-weight: 700;
+        }
+
+        footer {
+            padding: 26px 7%;
+            background: var(--forest);
+            color: #f5f1e7;
+            font: 12px/1.7 Arial, sans-serif;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 700px) {
+            header {
+                padding: 20px 6%;
+            }
+
+            .menu-layout {
+                width: 100%;
+                margin-bottom: 60px;
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .page-intro {
+                padding: 54px 22px 38px;
+            }
+
+            .food-feature {
+                width: 100%;
+                margin-bottom: 35px;
+                grid-template-columns: 1fr;
+            }
+
+            .food-feature img {
+                height: 240px;
+            }
+
+            .category-sidebar {
+                position: sticky;
+                z-index: 1;
+                top: 0;
+                padding: 13px 6%;
+                border-right: 0;
+                border-left: 0;
+            }
+
+            .category-sidebar h2 {
+                margin: 0 0 9px;
+                font-size: 16px;
+            }
+
+            .category-list {
+                display: flex;
+                gap: 7px;
+                overflow-x: auto;
+                padding-bottom: 3px;
+                scrollbar-width: thin;
+            }
+
+            .category-list a {
+                flex: 0 0 auto;
+                padding: 9px 11px;
+                background: #f1f7ef;
+            }
+
+            .menu-sections {
+                padding: 0 6%;
+            }
+
+            .dish-list {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-item {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+            }
+
+            .menu-item-image {
+                width: 100%;
+                min-width: 0;
+                height: 170px;
+                border-right: 0;
+                border-bottom: 1px solid #e2e4dc;
+            }
+
+            .menu-item-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+                padding: 16px 18px 18px;
+            }
+
+            .menu-item-options {
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .dish-price-overlay {
+                opacity: 1;
+                transform: none;
+            }
+
+            .order-launcher {
+                right: 14px;
+                bottom: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topbar">Nepali flavours · Made for slow moments</div>
+    <header>
+        <a class="brand" href="index.html">Green Park Café<span>Hotel &amp; Garden Retreat</span></a>
+        <a class="home-link" href="index.html">Back to home</a>
+    </header>
+    <main>
+        <section class="page-intro">
+            <div class="eyebrow">Nepali flavours · Good food, easy moments</div>
+            <h1>Our Café Menu</h1>
+            <p>Explore our meals, chicken, mutton, fish, momos, snacks and café favourites, with full, half and size options where available.</p>
+        </section>
+        <section class="food-feature" aria-label="Nepali-inspired food at Green Park Café">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&amp;fit=crop&amp;w=1200&amp;q=85"
+                alt="Warm, welcoming restaurant dining room">
+            <div class="food-feature-copy">
+                <div class="eyebrow">A taste of Nepal</div>
+                <h2>Made for sharing.</h2>
+                <p>From Nepali khana and freshly steamed momos to burgers, pizzas and snacks, find a favourite for every appetite.</p>
+            </div>
+        </section>
+        <div class="menu-layout">
+            <aside class="category-sidebar" aria-label="Menu categories">
+                <h2>Browse menu</h2>
+                <nav class="category-list" aria-label="Menu categories">
+                    <a href="#khana">Khana</a>
+                    <a href="#chicken-egg">Chicken &amp; Egg</a>
+                    <a href="#mutton">Mutton</a>
+                    <a href="#fish">Fish</a>
+                    <a href="#momo-noodles">Mo:Mo &amp; Fried</a>
+                    <a href="#burgers-sandwiches">Burgers &amp; Pizzas</a>
+                    <a href="#salads-snacks">Salads &amp; Snacks</a>
+                </nav>
+            </aside>
+            <div class="menu-sections">
+                <section class="menu-section" id="khana">
+                    <h2>Khana</h2>
+                    <p class="section-description">Comforting meals served fresh. All prices are in Rs.</p>
+                    <div class="menu-items">
+                        <article class="menu-item"><h3>Veg Khana</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="250"><span>Full <strong>Rs. 250</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Boiler Chicken Khana</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="400"><span>Full <strong>Rs. 400</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Fish Khana</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="450"><span>Full <strong>Rs. 450</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Lockal Chicken Khana</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="500"><span>Full <strong>Rs. 500</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Mutton Khana</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="500"><span>Full <strong>Rs. 500</strong></span><div class="dish-order-controls"></div></div></div></article>
+                    </div>
+                </section>
+                <section class="menu-section" id="chicken-egg">
+                    <h2>Chicken &amp; Egg Items</h2>
+                    <div class="menu-items">
+                        <article class="menu-item"><h3>Egg Boil</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="30"><span>Full <strong>Rs. 30</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Egg Fry</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="50"><span>Full <strong>Rs. 50</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Omelet</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="50"><span>Full <strong>Rs. 50</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Boil Chicken</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="250"><span>Full <strong>Rs. 250</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="150"><span>Half <strong>Rs. 150</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Chicken Roast</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="300"><span>Full <strong>Rs. 300</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="200"><span>Half <strong>Rs. 200</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Chicken Lollypop</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="350"><span>Full <strong>Rs. 350</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="200"><span>Half <strong>Rs. 200</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Chicken Chili</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="350"><span>Full <strong>Rs. 350</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="200"><span>Half <strong>Rs. 200</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Chicken Sadeko</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="350"><span>Full <strong>Rs. 350</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="200"><span>Half <strong>Rs. 200</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Korean Spicy Chicken with Honey</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="400"><span>Full <strong>Rs. 400</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="250"><span>Half <strong>Rs. 250</strong></span><div class="dish-order-controls"></div></div></div></article>
+                    </div>
+                </section>
+                <section class="menu-section" id="mutton">
+                    <h2> Mutton Items</h2>
+                    <div class="menu-items">
+                        <article class="menu-item"><h3>Bhutan</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="350"><span>Full <strong>Rs. 350</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="200"><span>Half <strong>Rs. 200</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Mutton Sekuwa</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="450"><span>Full <strong>Rs. 450</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="250"><span>Half <strong>Rs. 250</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Mutton Kachaul</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="450"><span>Full <strong>Rs. 450</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="250"><span>Half <strong>Rs. 250</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Mutton Tass</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="450"><span>Full <strong>Rs. 450</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="250"><span>Half <strong>Rs. 250</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Mutton Boil</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="450"><span>Full <strong>Rs. 450</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="250"><span>Half <strong>Rs. 250</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Mutton Fry</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="450"><span>Full <strong>Rs. 450</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="250"><span>Half <strong>Rs. 250</strong></span><div class="dish-order-controls"></div></div></div></article>
+                    </div>
+                </section>
+                <section class="menu-section" id="fish">
+                    <h2> Fish Items</h2>
+                    <div class="menu-items">
+                        <article class="menu-item"><h3>Fry Fish</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="350"><span>Full <strong>Rs. 350</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="200"><span>Half <strong>Rs. 200</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Fish Curry</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="400"><span>Full <strong>Rs. 400</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="200"><span>Half <strong>Rs. 200</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Fish Chilly</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="450"><span>Full <strong>Rs. 450</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="250"><span>Half <strong>Rs. 250</strong></span><div class="dish-order-controls"></div></div></div></article>
+                    </div>
+                </section>
+                <section class="menu-section" id="momo-noodles">
+                    <h2> Mo:Mo, Noodles &amp; Fried Items</h2>
+                    <div class="menu-items">
+                        <article class="menu-item"><h3>Veg. Chaumein</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="140"><span>Full <strong>Rs. 140</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="80"><span>Half <strong>Rs. 80</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Chicken Chaumein</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="180"><span>Full <strong>Rs. 180</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="100"><span>Half <strong>Rs. 100</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Veg Mo:Mo</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="180"><span>Full <strong>Rs. 180</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="100"><span>Half <strong>Rs. 100</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Chicken Mo:Mo</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="180"><span>Full <strong>Rs. 180</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="100"><span>Half <strong>Rs. 100</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Veg Rice</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="200"><span>Full <strong>Rs. 200</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="100"><span>Half <strong>Rs. 100</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Chicken Rice</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="220"><span>Full <strong>Rs. 220</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="120"><span>Half <strong>Rs. 120</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Fry Mo:Mo</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="225"><span>Full <strong>Rs. 225</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="125"><span>Half <strong>Rs. 125</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Johol Mo:Mo</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="250"><span>Full <strong>Rs. 250</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="150"><span>Half <strong>Rs. 150</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>C-Mo:Mo</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="250"><span>Full <strong>Rs. 250</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Fry C-Mo:Mo</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="250"><span>Full <strong>Rs. 250</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Mix Veg Boil</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="200"><span>Full <strong>Rs. 200</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="100"><span>Half <strong>Rs. 100</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Mushroom Pakaura</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="350"><span>Full <strong>Rs. 350</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="200"><span>Half <strong>Rs. 200</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Paneer Pakaura</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="350"><span>Full <strong>Rs. 350</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="200"><span>Half <strong>Rs. 200</strong></span><div class="dish-order-controls"></div></div></div></article>
+                    </div>
+                </section>
+                <section class="menu-section" id="burgers-sandwiches">
+                    <h2> Burgers, Sandwiches &amp; Pizzas</h2>
+                    <div class="menu-items">
+                        <article class="menu-item"><h3>Veg Burger</h3><div class="menu-item-options"><div class="menu-option" data-variant="Portion" data-price="150"><span><strong>Rs. 150</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Chicken Burger</h3><div class="menu-item-options"><div class="menu-option" data-variant="Portion" data-price="180"><span><strong>Rs. 180</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Veg. Sandwich</h3><div class="menu-item-options"><div class="menu-option" data-variant="Portion" data-price="150"><span><strong>Rs. 150</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Chicken Sandwich</h3><div class="menu-item-options"><div class="menu-option" data-variant="Portion" data-price="150"><span><strong>Rs. 150</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Cheese Sandwich</h3><div class="menu-item-options"><div class="menu-option" data-variant="Portion" data-price="150"><span><strong>Rs. 150</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Pizza Veg</h3><div class="menu-item-options"><div class="menu-option" data-variant="Medium" data-price="450"><span>Medium <strong>Rs. 450</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Large" data-price="550"><span>Large <strong>Rs. 550</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Pizza Chees</h3><div class="menu-item-options"><div class="menu-option" data-variant="Medium" data-price="450"><span>Medium <strong>Rs. 450</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Large" data-price="600"><span>Large <strong>Rs. 600</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Pizza Chicken</h3><div class="menu-item-options"><div class="menu-option" data-variant="Medium" data-price="450"><span>Medium <strong>Rs. 450</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Large" data-price="600"><span>Large <strong>Rs. 600</strong></span><div class="dish-order-controls"></div></div></div></article>
+                    </div>
+                </section>
+                <section class="menu-section" id="salads-snacks">
+                    <h2> Salads &amp; Snacks</h2>
+                    <div class="menu-items">
+                        <article class="menu-item"><h3>WiWi Sadeko</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="80"><span>Full <strong>Rs. 80</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Bhatmass Sadeko</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="120"><span>Full <strong>Rs. 120</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="80"><span>Half <strong>Rs. 80</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Green Salad</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="150"><span>Full <strong>Rs. 150</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="80"><span>Half <strong>Rs. 80</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Peanut Sadeko</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="150"><span>Full <strong>Rs. 150</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="80"><span>Half <strong>Rs. 80</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Sweet Corn Fry</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="180"><span>Full <strong>Rs. 180</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="100"><span>Half <strong>Rs. 100</strong></span><div class="dish-order-controls"></div></div></div></article>
+                        <article class="menu-item"><h3>Fruit Salad</h3><div class="menu-item-options"><div class="menu-option" data-variant="Full" data-price="250"><span>Full <strong>Rs. 250</strong></span><div class="dish-order-controls"></div></div><div class="menu-option" data-variant="Half" data-price="150"><span>Half <strong>Rs. 150</strong></span><div class="dish-order-controls"></div></div></div></article>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>All menu prices are in Nepali rupees (Rs.). Please ask our café team about today's availability.</p>
+    </footer>
+    <button class="order-launcher" type="button" aria-controls="order-panel" aria-expanded="false">
+        Your order <span class="order-count" aria-live="polite">0</span>
+    </button>
+    <button class="order-backdrop" type="button" aria-label="Close order summary" hidden></button>
+    <aside class="order-panel" id="order-panel" role="dialog" aria-modal="true" aria-labelledby="order-title" hidden>
+        <div class="order-panel-header">
+            <h2 id="order-title">Your Order</h2>
+            <button class="order-close" type="button" aria-label="Close order summary">&times;</button>
+        </div>
+        <div class="order-items" aria-live="polite"></div>
+        <div class="order-summary">
+            <p class="order-total"><span>Total</span><span class="order-total-amount">NPR 0/-</span></p>
+            <button class="finalize-order" type="button" disabled>Finalise order</button>
+            <p class="order-confirmation" role="status" hidden></p>
+            <p class="checkout-note">Review your items here before confirming. This demo does not send orders to the kitchen or process payment.</p>
+        </div>
+    </aside>
+    <script>
+        const cart = new Map();
+        const dishes = new Map();
+        const launcher = document.querySelector(".order-launcher");
+        const backdrop = document.querySelector(".order-backdrop");
+        const panel = document.querySelector(".order-panel");
+        const itemsContainer = document.querySelector(".order-items");
+        const itemCount = document.querySelector(".order-count");
+        const totalAmount = document.querySelector(".order-total-amount");
+        const finalizeButton = document.querySelector(".finalize-order");
+        const confirmation = document.querySelector(".order-confirmation");
+
+        const formatPrice = amount => `NPR ${amount}/-`;
+
+        function createQuantityControl(id, name, quantity) {
+            const control = document.createElement("div");
+            control.className = "quantity-control";
+            const decrease = document.createElement("button");
+            decrease.type = "button";
+            decrease.textContent = "−";
+            decrease.setAttribute("aria-label", `Remove one ${name}`);
+            decrease.dataset.cartAction = "decrease";
+            decrease.dataset.itemId = id;
+            const count = document.createElement("span");
+            count.textContent = `Qty ${quantity}`;
+            const increase = document.createElement("button");
+            increase.type = "button";
+            increase.textContent = "+";
+            increase.setAttribute("aria-label", `Add one ${name}`);
+            increase.dataset.cartAction = "increase";
+            increase.dataset.itemId = id;
+            control.append(decrease, count, increase);
+            return control;
+        }
+
+        function renderOption(id) {
+            const item = dishes.get(id);
+            const quantity = cart.get(id) || 0;
+            const controls = item.option.querySelector(".dish-order-controls");
+            controls.replaceChildren();
+
+            if (quantity > 0) {
+                controls.append(createQuantityControl(id, item.name, quantity));
+                return;
+            }
+
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = "order-now";
+            button.textContent = "Add";
+            button.setAttribute("aria-label", `Add ${item.name} to order`);
+            button.dataset.cartAction = "add";
+            button.dataset.itemId = id;
+            controls.append(button);
+        }
+
+        function renderCart() {
+            itemsContainer.replaceChildren();
+            let quantityTotal = 0;
+            let priceTotal = 0;
+
+            for (const id of dishes.keys()) {
+                renderOption(id);
+            }
+
+            if (cart.size === 0) {
+                const emptyMessage = document.createElement("p");
+                emptyMessage.className = "empty-order";
+                emptyMessage.textContent = "Your order is empty. Choose a dish from the menu to get started.";
+                itemsContainer.append(emptyMessage);
+            }
+
+            for (const [id, quantity] of cart) {
+                const item = dishes.get(id);
+                quantityTotal += quantity;
+                priceTotal += item.price * quantity;
+
+                const row = document.createElement("div");
+                row.className = "order-line";
+                const name = document.createElement("h3");
+                name.textContent = item.name;
+                const lineTotal = document.createElement("span");
+                lineTotal.className = "order-line-total";
+                lineTotal.textContent = formatPrice(item.price * quantity);
+                row.append(name, lineTotal, createQuantityControl(id, item.name, quantity));
+                itemsContainer.append(row);
+            }
+
+            itemCount.textContent = String(quantityTotal);
+            totalAmount.textContent = formatPrice(priceTotal);
+            finalizeButton.disabled = cart.size === 0;
+            confirmation.hidden = !confirmed;
+        }
+
+        function setPanelOpen(open) {
+            panel.hidden = !open;
+            backdrop.hidden = !open;
+            launcher.setAttribute("aria-expanded", String(open));
+            if (open) {
+                panel.querySelector(".order-close").focus();
+            } else {
+                launcher.focus();
+            }
+        }
+
+        const menuPhotoMap = {
+            "veg khana": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80",
+            "boiler chicken": "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=900&q=80",
+            "fish khana": "https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=900&q=80",
+            "lockal chicken": "https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=900&q=80",
+            "mutton": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80",
+            "egg": "https://images.unsplash.com/photo-1510693206972-df098062cb71?auto=format&fit=crop&w=900&q=80",
+            "omelet": "https://images.unsplash.com/photo-1510693206972-df098062cb71?auto=format&fit=crop&w=900&q=80",
+            "roast": "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=900&q=80",
+            "lollypop": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=900&q=80",
+            "chili": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=900&q=80",
+            "sadeko": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80",
+            "honey": "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=900&q=80",
+            "bhutan": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80",
+            "sekuwa": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80",
+            "kachaul": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80",
+            "tass": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80",
+            "fish curry": "https://images.unsplash.com/photo-1534939561126-855b8675edd7?auto=format&fit=crop&w=900&q=80",
+            "chilly": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=900&q=80",
+            "chaumein": "https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?auto=format&fit=crop&w=900&q=80",
+            "mo:mo": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80",
+            "rice": "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=900&q=80",
+            "fry": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=900&q=80",
+            "johol": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80",
+            "mix veg boil": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80",
+            "mushroom": "https://images.unsplash.com/photo-1546793665-c74683f339c1?auto=format&fit=crop&w=900&q=80",
+            "paneer": "https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=900&q=80",
+            "burger": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=80",
+            "sandwich": "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=900&q=80",
+            "pizza": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=80",
+            "salad": "https://images.unsplash.com/photo-1546793665-c74683f339c1?auto=format&fit=crop&w=900&q=80",
+            "peanut": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80",
+            "sweet corn": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80",
+            "fruit": "https://images.unsplash.com/photo-1619566636858-adf3ef46400b?auto=format&fit=crop&w=900&q=80",
+            "general": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80"
+        };
+
+        function getItemPhoto(itemName) {
+            const normalized = itemName.toLowerCase();
+            if (menuPhotoMap[normalized]) {
+                return menuPhotoMap[normalized];
+            }
+
+            const hash = [...normalized].reduce((acc, character) => acc + character.charCodeAt(0), 0);
+            const photoPool = [
+                "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80",
+                "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=900&q=80",
+                "https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=900&q=80",
+                "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80",
+                "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80",
+                "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=900&q=80",
+                "https://images.unsplash.com/photo-1527477396000-e27163b481c2?auto=format&fit=crop&w=900&q=80",
+                "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=900&q=80",
+                "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=900&q=80",
+                "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=900&q=80",
+                "https://images.unsplash.com/photo-1534939561126-855b8675edd7?auto=format&fit=crop&w=900&q=80",
+                "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80",
+                "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=900&q=80",
+                "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=80"
+            ];
+            return photoPool[hash % photoPool.length];
+        }
+
+        document.querySelectorAll(".menu-item").forEach(itemElement => {
+            const itemName = itemElement.querySelector("h3")?.textContent.trim() || "Menu item";
+            const image = document.createElement("img");
+            image.className = "menu-item-image";
+            image.src = getItemPhoto(itemName);
+            image.alt = `${itemName} photo`;
+            image.loading = "lazy";
+
+            const content = document.createElement("div");
+            content.className = "menu-item-content";
+            Array.from(itemElement.children).forEach(child => content.appendChild(child));
+
+            itemElement.replaceChildren(image, content);
+        });
+
+        document.querySelectorAll(".menu-item").forEach((itemElement, itemIndex) => {
+            const itemName = itemElement.querySelector("h3").textContent.trim();
+            itemElement.querySelectorAll(".menu-option").forEach((option, optionIndex) => {
+                const variant = option.dataset.variant;
+                const name = variant === "Portion" ? itemName : `${itemName} (${variant})`;
+                const id = `menu-item-${itemIndex}-${optionIndex}`;
+                dishes.set(id, {
+                    name,
+                    price: Number(option.dataset.price),
+                    option
+                });
+                renderOption(id);
+            });
+        });
+
+        document.addEventListener("click", event => {
+            const actionButton = event.target.closest("[data-cart-action]");
+            if (!actionButton) {
+                return;
+            }
+
+            const { cartAction, itemId } = actionButton.dataset;
+            if (!dishes.has(itemId)) {
+                return;
+            }
+
+            const currentQuantity = cart.get(itemId) || 0;
+            const nextQuantity = cartAction === "decrease"
+                ? Math.max(0, currentQuantity - 1)
+                : currentQuantity + 1;
+
+            if (nextQuantity === 0) {
+                cart.delete(itemId);
+            } else {
+                cart.set(itemId, nextQuantity);
+            }
+
+            renderCart();
+            if (cartAction === "add") {
+                setPanelOpen(true);
+            }
+        });
+
+        launcher.addEventListener("click", () => setPanelOpen(true));
+        backdrop.addEventListener("click", () => setPanelOpen(false));
+        panel.querySelector(".order-close").addEventListener("click", () => setPanelOpen(false));
+        finalizeButton.addEventListener("click", () => {
+            if (cart.size === 0) {
+                return;
+            }
+
+            const orderItems = Array.from(cart, ([id, quantity]) => {
+                const item = dishes.get(id);
+                return {
+                    name: item.name,
+                    quantity,
+                    unitPrice: item.price,
+                    lineTotal: item.price * quantity
+                };
+            });
+            const order = {
+                items: orderItems,
+                total: orderItems.reduce((sum, item) => sum + item.lineTotal, 0)
+            };
+
+            try {
+                sessionStorage.setItem("greenParkOrder", JSON.stringify(order));
+                window.location.href = "checkout.html";
+            } catch (error) {
+                console.error("Unable to save the order for checkout.", error);
+                confirmation.textContent = "We couldn't open checkout. Please check your browser storage settings and try again.";
+                confirmation.hidden = false;
+            }
+        });
+
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape" && !panel.hidden) {
+                setPanelOpen(false);
+            }
+        });
+
+        renderCart();
+    </script>
+</body>
+
+</html>
